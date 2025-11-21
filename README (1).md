@@ -36,28 +36,6 @@ para obtener el coeficiente de difusión efectivo \(D\).
 
 ---
 
-## 🔧 Estructura del repositorio
-
-Se recomienda organizar el repositorio de la siguiente forma:
-
-```text
-Soft-Lorentz-Gas/
-│
-├── src/
-│   └── simulate_soft_lorentz_diffusion_fixed.py
-│
-├── notebooks/
-│   └── Resultados_finales.ipynb      # Análisis, barrido en energías, gráficas de MSD y D(E)
-│
-├── figures/
-│   └── (MSD_vs_t, D_vs_E, mapas de potencial, etc.)
-│
-├── README.md
-└── LICENSE
-```
-
----
-
 ## ⚙️ Parámetros globales y geometría de la red
 
 Al inicio del archivo se definen los parámetros geométricos y de potencial:
