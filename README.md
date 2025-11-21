@@ -411,13 +411,45 @@ Con estos datos se pueden generar figuras de **D vs E** y comparar con los resul
 - `notebooks/Resultados_finales.ipynb`:
   - Contiene ejemplos de corridas, gráficas de MSD(t), ajustes lineales y la curva D(E).  
   - Sirve como cuaderno de trabajo donde se documentan los parámetros utilizados y se guardan las figuras finales.
+---
 
-- `figures/`:
-  - Se recomienda guardar aquí:
-    - MSD vs. t para diferentes energías.
-    - Ajustes lineales de la parte difusiva.
-    - Gráfica D(E) (con barras de error).
-    - Mapas de potencial 2D si se generan.
+## 📝 Resumen
+
+Este repositorio reúne las herramientas necesarias para simular y analizar el comportamiento difusivo en el **Soft Lorentz Gas** mediante dinámica clásica en un potencial periódico suavizado.
+
+Para utilizar el código y recrear los resultados del proyecto, se recomienda descargar y ejecutar los siguientes archivos de Python del repositorio:
+
+- `src/simulate_soft_lorentz_diffusion_fixed.py`  
+- `notebooks/Resultados_finales.ipynb`  
+- (Opcional) cualquier script auxiliar adicional dentro de `src/` que se agregue más adelante
+
+El archivo `simulate_soft_lorentz_diffusion_fixed.py` contiene las funciones esenciales del modelo:
+
+- Definición de la red triangular y sus vectores de base  
+- Implementación del potencial suave tipo Fermi y su fuerza asociada  
+- Manejo de condiciones periódicas reales mediante “wrapping” y acumulación de desplazamientos de red  
+- Integración temporal con el esquema de Velocity Verlet  
+- Cálculo del **Mean Squared Displacement (MSD)** y estimación del coeficiente de difusión efectivo \(D(E)\)
+
+El notebook `Resultados_finales.ipynb` muestra cómo:
+
+- Ejecutar las simulaciones para distintos valores de energía  
+- Graficar MSD vs. tiempo  
+- Ajustar el régimen difusivo para extraer \(D\)  
+- Construir la curva \(D(E)\) y comparar tendencias con la literatura
+
+---
+
+### 🔬 Extensibilidad del código
+
+El diseño modular del programa permite usar este repositorio como **base para estudiar otros sistemas**.  
+En particular, es posible:
+
+- Cambiar el potencial (por ejemplo, otros perfiles suaves o duros)  
+- Modificar la geometría de la red (cuadrada, hexagonal, etc.) alterando los vectores `a1` y `a2`  
+- Incorporar nuevos términos en la dinámica (campos externos, masas distintas, etc.)
+
+De este modo, quien descargue los archivos de Python puede reutilizar la estructura general del código para explorar **modelos de difusión y transporte en otros medios periódicos**, sin tener que reescribir desde cero el framework numérico.
 
 ---
 
