@@ -147,7 +147,7 @@ De este modo, quien descargue los archivos de Python puede reutilizar la estruct
 - **Carlos Alberto Meza Morales** – Pontificia Universidad Católica de Chile  
 - **Jesús David Muñoz Muñoz** – Pontificia Universidad Católica de Chile  
 
-Proyecto desarrollado en el contexto del curso **Mecánica Estadística Avanzada (PHYS-4035)**.
+Proyecto desarrollado en el contexto del curso **Mecánica Estadística Avanzada (FIM8451-1)**.
 
 ---
 
