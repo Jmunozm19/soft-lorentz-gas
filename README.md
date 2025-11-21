@@ -411,6 +411,65 @@ Con estos datos se pueden generar figuras de **D vs E** y comparar con los resul
 - `notebooks/Resultados_finales.ipynb`:
   - Contiene ejemplos de corridas, gráficas de MSD(t), ajustes lineales y la curva D(E).  
   - Sirve como cuaderno de trabajo donde se documentan los parámetros utilizados y se guardan las figuras finales.
+## 📊 Resultados principales
+
+### 1. Meseta difusiva (ambos regímenes)
+<p align="center">
+  <img src="figures/MSD_over_4t_both.png" width="600">
+  <br>
+  <em>MSD/(4t) mostrando regiones cercanas al umbral y altas energías.</em>
+</p>
+
+### 2. Región cercana al umbral \(E \to 1^{+}\)
+<p align="center">
+  <img src="figures/DE_near1_fit.png" width="600">
+  <br>
+  <em>Ajuste en escala log–log: \(D \propto (E - 1)^{b}\).</em>
+</p>
+
+### 3. Alta energía – dependencia \(D(E)\)
+<p align="center">
+  <img src="figures/DE_loglog_fit_highE.png" width="600">
+  <br>
+  <em>Ajuste lineal en log–log para el régimen de energías grandes.</em>
+</p>
+
+---
+
+## 📈 MSD detallado en cada régimen
+
+### MSD vs t (región \(E \to 1^{+}\))
+<p align="center">
+  <img src="figures/MSD_vs_t_near1.png" width="600">
+  <br>
+  <em>Comportamiento lineal del MSD en la cola temporal para energías cercanas al umbral.</em>
+</p>
+
+### MSD vs t (alta energía)
+<p align="center">
+  <img src="figures/MSD_vs_t_alta_energia.png" width="600">
+  <br>
+  <em>Comportamiento lineal bien definido en la región difusiva para energías grandes.</em>
+</p>
+
+---
+
+## 🧭 Geometría del sistema
+
+### Campo de potencial en la celda unitaria
+<p align="center">
+  <img src="figures/soft_lorentz_unitcell.png" width="600">
+  <br>
+  <em>Mapa del potencial suavizado tipo Fermi en la red triangular.</em>
+</p>
+
+### Perfil 1D del potencial en la base de la celda
+<p align="center">
+  <img src="figures/soft_lorentz_profile.png" width="600">
+  <br>
+  <em>Visualización del mínimo del canal y del ancho efectivo accesible para distintas energías.</em>
+</p>
+
 ---
 
 ## 📝 Resumen
