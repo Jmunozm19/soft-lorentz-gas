@@ -109,8 +109,7 @@ Este repositorio reúne las herramientas necesarias para simular y analizar el c
 Para utilizar el código y recrear los resultados del proyecto, se recomienda descargar y ejecutar los siguientes archivos de Python del repositorio:
 
 - `src/simulate_soft_lorentz_diffusion_fixed.py`  
-- `notebooks/Resultados_finales.ipynb`  
-- (Opcional) cualquier script auxiliar adicional dentro de `src/` que se agregue más adelante
+- `notebooks/Resultados_finales.ipynb` 
 
 El archivo `simulate_soft_lorentz_diffusion_fixed.py` contiene las funciones esenciales del modelo:
 
