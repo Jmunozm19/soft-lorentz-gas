@@ -10,37 +10,100 @@ donde se implementa la dinámica de partículas, el cálculo del **Mean Squared 
 
 ---
 
-## 🧠 Idea general del código
+# 📦 Método Numérico y Estructura del Código
 
-El código simula un conjunto de partículas puntuales que se mueven en un potencial periódico generado por una **red triangular** de “discos suaves”.  
-Para una energía total \(E\), las partículas obedecen la dinámica clásica:
-
-- \\( \dot{\mathbf r} = \mathbf v \\)
-- \\( \dot{\mathbf v} = \mathbf F(\mathbf r) = -\nabla V(\mathbf r) \\)
-
-donde el potencial total es una suma de potenciales de tipo Fermi centrados en cada punto de la red.
-
-A partir de las trayectorias se calcula:
-
-\[
-\text{MSD}(t) = \big\langle \lvert \mathbf r(t) - \mathbf r(0) \rvert^2 \big\rangle,
-\]
-
-y en régimen difusivo se ajusta la ley:
-
-\[
-\text{MSD}(t) \approx 4 D\, t,
-\]
-
-para obtener el coeficiente de difusión efectivo \(D\).
+Esta sección describe la estructura del código utilizado para simular la dinámica del **Soft Lorentz Gas** y calcular el **coeficiente de difusión** \( D(E) \).  
+Todo el código del proyecto está disponible en este repositorio.
 
 ---
 
-## 📓 Notebooks y figuras
+## 🔧 1. Estructura general del código
+
+El proyecto está organizado en tres componentes principales:
+
+### **1. Módulo de dinámica**  
+📄 `src/simulate_soft_lorentz_diffusion_fixed.py`  
+Contiene toda la implementación del modelo físico y del algoritmo numérico:
+
+- definición del potencial suave tipo Fermi y su derivada,  
+- cálculo del potencial total y las fuerzas,  
+- implementación de condiciones periódicas reales,  
+- integrador Velocity Verlet,  
+- cálculo del MSD,  
+- estimación del coeficiente de difusión \( D(E) \).
+
+---
+
+### **2. Notebook de análisis**  
+📄 `notebooks/Resultados_finales.ipynb`  
+
+Funciona como *interfaz de usuario* del proyecto:
+
+- realiza barridos en energía,  
+- ejecuta la simulación usando el módulo de dinámica,  
+- genera las gráficas (MSD vs t, mesetas, D(E), ajustes log–log),  
+- guarda resultados y figuras.
+
+---
+
+## 🧠 2. Módulo de dinámica: funciones esenciales
+
+### 🔸 `V_fermi(r)` y `dVdr_fermi(V)`
+Implementan el potencial suave tipo Fermi y su derivada radial.
+
+### 🔸 `potential_at(r)`
+Suma la contribución del potencial Fermi para todos los centros de la red.
+
+### 🔸 `force_at(r)`
+Calcula la fuerza total:
+
+\[
+\mathbf{F}(\mathbf r) = -\nabla V_{\text{tot}}(\mathbf r)
+\]
+
+### 🔸 `wrap_to_cell(r)`
+Implementa **condiciones periódicas exactas**, devolviendo:
+- la posición envuelta en la celda unitaria,  
+- el desplazamiento de red acumulado.
+
+### 🔸 `sample_positions(N, E)`
+Genera posiciones iniciales uniformes garantizando energía cinética positiva.
+
+### 🔸 `sample_velocities(N, E, V_at_r)`
+Asigna velocidades iniciales compatibles con energía total fija \(E\).
+
+### 🔸 `simulate_msd(E, ...)`
+Ejecuta:
+1. muestreo de posiciones y velocidades,  
+2. integración temporal con Verlet,  
+3. condiciones periódicas,  
+4. reconstrucción absoluta,  
+5. cálculo del **MSD**.
+
+Retorna: tiempos y valores de MSD.
+
+### 🔸 `estimate_D_from_msd(times, msd)`
+Ajusta:
+
+\[
+\mathrm{MSD}(t) \approx 4Dt
+\]
+
+y obtiene:
+- \(D\),  
+- error de ajuste,  
+- pendiente,  
+- intercepto.
+
+---
+
+## 📓3. Notebooks y figuras
 
 - `notebooks/Resultados_finales.ipynb`:
-  - Contiene ejemplos de corridas, gráficas de MSD(t), ajustes lineales y la curva D(E).  
-  - Sirve como cuaderno de trabajo donde se documentan los parámetros utilizados y se guardan las figuras finales.
+  - define energías,  
+  - ejecuta simulaciones,  
+  - extrae \( D(E) \),  
+  - genera curvas y figuras finales.
 ## 📊 Resultados principales
 
 ### 1. Meseta difusiva (ambos regímenes)
